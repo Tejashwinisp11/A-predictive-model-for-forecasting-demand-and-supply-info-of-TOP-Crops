@@ -34,59 +34,29 @@ data.head()
 df.dtypes
 
 
-# In[19]:
-
-
 df["gender"].unique()
-
-
-# In[20]:
 
 
 df["residence"].unique()
 
-
-# In[21]:
-
-
 df["location"].unique()
-
-
-# In[27]:
-
 
 # Perform one-hot encoding
 data_encoded = pd.get_dummies(data)
 print(data_encoded)
 data_encoded.columns
 
-
-# In[23]:
-
-
 # Segregating Features & Target labels
 X = data_encoded.drop(columns=['TARGET_PREDICTION_PERCENT'])
 y = data_encoded['TARGET_PREDICTION_PERCENT']
 
-
-# In[24]:
-
-
 # Splitting the dataset into training and testing sets
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-
-# In[25]:
-
 
 # Feature scaling
 scaler = StandardScaler()
 X_train_scaled = scaler.fit_transform(X_train)
 X_test_scaled = scaler.transform(X_test)
-
-
-# In[26]:
-
 
 # Print the first few rows of the transformed training data
 print("Transformed Training Data:")
